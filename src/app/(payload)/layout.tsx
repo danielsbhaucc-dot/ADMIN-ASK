@@ -1,4 +1,6 @@
+import configPromise from '../../payload.config'
 import { RootLayout } from '@payloadcms/next/layouts'
+import '@payloadcms/next/css'
 import React from 'react'
 import { importMap } from './importMap'
 
@@ -7,5 +9,9 @@ type Args = {
 }
 
 export default function Layout({ children }: Args) {
-  return <RootLayout importMap={importMap}>{children}</RootLayout>
+  return (
+    <RootLayout config={configPromise} importMap={importMap}>
+      {children}
+    </RootLayout>
+  )
 }
