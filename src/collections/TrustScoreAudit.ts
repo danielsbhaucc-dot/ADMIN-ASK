@@ -1,0 +1,1 @@
+export { TrustScoreAudit } from './RoleAssignmentHistory'

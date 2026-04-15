@@ -1,0 +1,1 @@
+export { UserTrustScore } from './RoleAssignmentHistory'
