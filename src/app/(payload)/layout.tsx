@@ -1,4 +1,11 @@
 import { RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
+import { importMap } from './importMap'
 
-export default RootLayout
+type Args = {
+  children: React.ReactNode
+}
+
+export default function Layout({ children }: Args) {
+  return <RootLayout importMap={importMap}>{children}</RootLayout>
+}
