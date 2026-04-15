@@ -8,7 +8,7 @@ type Args = {
 }
 
 export const generateMetadata = ({ params, searchParams }: Args) =>
-  generatePageMetadata({ config: configPromise, params, searchParams, importMap })
+  generatePageMetadata({ config: configPromise, params, searchParams })
 
 export default function Page({ params, searchParams }: Args) {
   return RootPage({ config: configPromise, params, searchParams, importMap })
