@@ -114,11 +114,35 @@ if (!payloadSecret) {
   throw new Error('Missing PAYLOAD_SECRET environment variable')
 }
 
+/** Vercel/Lambda often hit SELF_SIGNED_CERT_IN_CHAIN with Supabase; lenient SSL keeps TLS but skips CA verify. Set DATABASE_SSL_REJECT_UNAUTHORIZED=true to enforce verification. */
+function poolSslForHost(host: string):
+  | { rejectUnauthorized: boolean }
+  | undefined {
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return undefined
+  }
+  if (process.env.DATABASE_SSL_REJECT_UNAUTHORIZED === 'true') {
+    return undefined
+  }
+  if (process.env.DATABASE_SSL_REJECT_UNAUTHORIZED === 'false') {
+    return { rejectUnauthorized: false }
+  }
+  const isSupabase =
+    host.includes('supabase.co') || host.includes('supabase.com')
+  if (!isSupabase) {
+    return undefined
+  }
+  return { rejectUnauthorized: false }
+}
+
+const poolSsl = poolSslForHost(databaseHost)
+
 export default buildConfig({
   // הגדרת מסד הנתונים
   db: postgresAdapter({
     pool: {
       connectionString: databaseURL,
+      ...(poolSsl ? { ssl: poolSsl } : {}),
     },
     // חשוב: מונע שינויים אוטומטיים בסכימה הקיימת שלך
     push: false,
