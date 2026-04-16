@@ -9,4 +9,5 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
     group: 'ניהול מערכת',
   },
+  fields: [],
 }
