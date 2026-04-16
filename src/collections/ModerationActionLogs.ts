@@ -6,11 +6,11 @@ export const ModerationActionLogs: CollectionConfig = {
   admin: {
     useAsTitle: 'action_type',
     group: 'מודרציה',
-    defaultColumns: ['actor_id', 'actor_role', 'action_type', 'target_type', 'created_at'],
+    defaultColumns: ['actor', 'actor_role', 'action_type', 'target_type', 'created_at'],
   },
   fields: [
     {
-      name: 'actor_id',
+      name: 'actor',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'מבצע הפעולה',

@@ -6,11 +6,11 @@ export const ContentPenalties: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'מודרציה',
-    defaultColumns: ['user_id', 'rule_id', 'performed_by', 'created_at'],
+    defaultColumns: ['user', 'rule', 'performedBy', 'created_at'],
   },
   fields: [
     {
-      name: 'user_id',
+      name: 'user',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'משתמש',
@@ -22,19 +22,19 @@ export const ContentPenalties: CollectionConfig = {
       label: 'מזהה תוכן',
     },
     {
-      name: 'rule_id',
+      name: 'rule',
       type: 'relationship',
       relationTo: 'violation-rules',
       label: 'כלל שהופר',
     },
     {
-      name: 'performed_by',
+      name: 'performedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'בוצע על ידי',
     },
     {
-      name: 'reversed_by',
+      name: 'reversedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'בוטל על ידי',

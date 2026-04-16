@@ -6,17 +6,17 @@ export const RoleAssignmentHistory: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'היסטוריה',
-    defaultColumns: ['actor_id', 'target_user_id', 'created_at'],
+    defaultColumns: ['actor', 'targetUser', 'created_at'],
   },
   fields: [
     {
-      name: 'actor_id',
+      name: 'actor',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'מבצע',
     },
     {
-      name: 'target_user_id',
+      name: 'targetUser',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'משתמש יעד',
@@ -36,18 +36,18 @@ export const TrustScoreAudit: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'היסטוריה',
-    defaultColumns: ['user_id', 'performed_by', 'created_at'],
+    defaultColumns: ['user', 'performedBy', 'created_at'],
   },
   fields: [
     {
-      name: 'user_id',
+      name: 'user',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'משתמש',
       required: true,
     },
     {
-      name: 'performed_by',
+      name: 'performedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'בוצע על ידי',
@@ -67,11 +67,11 @@ export const UserTrustScore: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'היסטוריה',
-    defaultColumns: ['user_id'],
+    defaultColumns: ['user'],
   },
   fields: [
     {
-      name: 'user_id',
+      name: 'user',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'משתמש',

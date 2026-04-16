@@ -6,18 +6,18 @@ export const StaffNotes: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'הודעות',
-    defaultColumns: ['sender_id', 'recipient_id', 'created_at'],
+    defaultColumns: ['sender', 'recipient', 'created_at'],
   },
   fields: [
     {
-      name: 'sender_id',
+      name: 'sender',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'שולח',
       required: true,
     },
     {
-      name: 'recipient_id',
+      name: 'recipient',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נמען',
@@ -38,18 +38,18 @@ export const UserFollows: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'חברתי',
-    defaultColumns: ['follower_id', 'followed_id'],
+    defaultColumns: ['follower', 'followed'],
   },
   fields: [
     {
-      name: 'follower_id',
+      name: 'follower',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'עוקב',
       required: true,
     },
     {
-      name: 'followed_id',
+      name: 'followed',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נעקב',
@@ -70,18 +70,18 @@ export const ProfileViews: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'חברתי',
-    defaultColumns: ['profile_id', 'viewer_id'],
+    defaultColumns: ['profile', 'viewer'],
   },
   fields: [
     {
-      name: 'profile_id',
+      name: 'profile',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'פרופיל שנצפה',
       required: true,
     },
     {
-      name: 'viewer_id',
+      name: 'viewer',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'צופה',
@@ -102,11 +102,11 @@ export const ScoutsGuideDocument: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'אחר',
-    defaultColumns: ['updated_by', 'updated_at'],
+    defaultColumns: ['updatedBy', 'updated_at'],
   },
   fields: [
     {
-      name: 'updated_by',
+      name: 'updatedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'עודכן על ידי',
@@ -126,11 +126,11 @@ export const ModerationFilterPresets: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'מודרציה',
-    defaultColumns: ['user_id', 'created_at'],
+    defaultColumns: ['user', 'created_at'],
   },
   fields: [
     {
-      name: 'user_id',
+      name: 'user',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'משתמש',

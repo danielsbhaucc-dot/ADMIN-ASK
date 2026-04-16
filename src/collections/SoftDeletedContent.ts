@@ -6,23 +6,23 @@ export const SoftDeletedContent: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'מודרציה',
-    defaultColumns: ['deleted_by', 'penalty_id', 'restored_by'],
+    defaultColumns: ['deletedBy', 'penalty', 'restoredBy'],
   },
   fields: [
     {
-      name: 'deleted_by',
+      name: 'deletedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נמחק על ידי',
     },
     {
-      name: 'penalty_id',
+      name: 'penalty',
       type: 'relationship',
       relationTo: 'content-penalties',
       label: 'עונש קשור',
     },
     {
-      name: 'restored_by',
+      name: 'restoredBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'שוחזר על ידי',

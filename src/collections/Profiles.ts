@@ -53,7 +53,7 @@ export const Profiles: CollectionConfig = {
       label: 'אודות',
     },
     {
-      name: 'appointed_by',
+      name: 'appointedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'מונה על ידי',

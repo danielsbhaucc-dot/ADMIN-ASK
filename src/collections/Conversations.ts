@@ -6,11 +6,11 @@ export const Conversations: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'הודעות',
-    defaultColumns: ['created_by', 'created_at'],
+    defaultColumns: ['createdBy', 'created_at'],
   },
   fields: [
     {
-      name: 'created_by',
+      name: 'createdBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נוצר על ידי',
@@ -31,18 +31,18 @@ export const ConversationParticipants: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'הודעות',
-    defaultColumns: ['conversation_id', 'user_id', 'is_muted', 'is_pinned'],
+    defaultColumns: ['conversation', 'user', 'is_muted', 'is_pinned'],
   },
   fields: [
     {
-      name: 'conversation_id',
+      name: 'conversation',
       type: 'relationship',
       relationTo: 'conversations',
       label: 'שיחה',
       required: true,
     },
     {
-      name: 'user_id',
+      name: 'user',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'משתמש',
@@ -72,14 +72,14 @@ export const ConversationTyping: CollectionConfig = {
   },
   fields: [
     {
-      name: 'conversation_id',
+      name: 'conversation',
       type: 'relationship',
       relationTo: 'conversations',
       label: 'שיחה',
       required: true,
     },
     {
-      name: 'user_id',
+      name: 'user',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'משתמש',

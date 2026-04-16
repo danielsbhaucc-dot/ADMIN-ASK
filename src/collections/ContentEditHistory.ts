@@ -6,7 +6,7 @@ export const ContentEditHistory: CollectionConfig = {
   admin: {
     useAsTitle: 'content_type',
     group: 'היסטוריה',
-    defaultColumns: ['content_type', 'editor_id', 'editor_role', 'reason', 'created_at'],
+    defaultColumns: ['content_type', 'editor', 'editor_role', 'reason', 'created_at'],
   },
   fields: [
     {
@@ -22,7 +22,7 @@ export const ContentEditHistory: CollectionConfig = {
       required: true,
     },
     {
-      name: 'editor_id',
+      name: 'editor',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'עורך',

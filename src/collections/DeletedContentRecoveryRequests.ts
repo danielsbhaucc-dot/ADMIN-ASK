@@ -6,11 +6,11 @@ export const DeletedContentRecoveryRequests: CollectionConfig = {
   admin: {
     useAsTitle: 'target_type',
     group: 'מודרציה',
-    defaultColumns: ['requested_by', 'target_type', 'status', 'reviewed_by', 'created_at'],
+    defaultColumns: ['requestedBy', 'target_type', 'status', 'reviewedBy', 'created_at'],
   },
   fields: [
     {
-      name: 'requested_by',
+      name: 'requestedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'התבקש על ידי',
@@ -56,7 +56,7 @@ export const DeletedContentRecoveryRequests: CollectionConfig = {
       ],
     },
     {
-      name: 'reviewed_by',
+      name: 'reviewedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נסקר על ידי',

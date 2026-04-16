@@ -6,11 +6,11 @@ export const AdminReports: CollectionConfig = {
   admin: {
     useAsTitle: 'reason',
     group: 'מודרציה',
-    defaultColumns: ['content_type', 'reason', 'status', 'reporter_id', 'created_at'],
+    defaultColumns: ['content_type', 'reason', 'status', 'reporter', 'created_at'],
   },
   fields: [
     {
-      name: 'reporter_id',
+      name: 'reporter',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'מדווח',
@@ -63,7 +63,7 @@ export const AdminReports: CollectionConfig = {
       label: 'מזהה יעד',
     },
     {
-      name: 'resolved_by',
+      name: 'resolvedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'טופל על ידי',

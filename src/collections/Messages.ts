@@ -6,18 +6,18 @@ export const Messages: CollectionConfig = {
   admin: {
     useAsTitle: 'content',
     group: 'הודעות',
-    defaultColumns: ['sender_id', 'conversation_id', 'content', 'private', 'created_at'],
+    defaultColumns: ['sender', 'conversation', 'content', 'private', 'created_at'],
   },
   fields: [
     {
-      name: 'conversation_id',
+      name: 'conversation',
       type: 'relationship',
       relationTo: 'conversations',
       label: 'שיחה',
       required: true,
     },
     {
-      name: 'sender_id',
+      name: 'sender',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'שולח',
@@ -30,7 +30,7 @@ export const Messages: CollectionConfig = {
       required: true,
     },
     {
-      name: 'reply_to',
+      name: 'replyTo',
       type: 'relationship',
       relationTo: 'messages',
       label: 'תגובה להודעה',

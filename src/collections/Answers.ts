@@ -6,18 +6,18 @@ export const Answers: CollectionConfig = {
   admin: {
     useAsTitle: 'content',
     group: 'תוכן',
-    defaultColumns: ['content', 'question_id', 'author_id', 'is_best_answer', 'moderation_status', 'votes'],
+    defaultColumns: ['content', 'question', 'author', 'is_best_answer', 'moderation_status', 'votes'],
   },
   fields: [
     {
-      name: 'question_id',
+      name: 'question',
       type: 'relationship',
       relationTo: 'questions',
       label: 'שאלה',
       required: true,
     },
     {
-      name: 'author_id',
+      name: 'author',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'מחבר',
@@ -64,7 +64,7 @@ export const Answers: CollectionConfig = {
       defaultValue: false,
     },
     {
-      name: 'deleted_by',
+      name: 'deletedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נמחק על ידי',

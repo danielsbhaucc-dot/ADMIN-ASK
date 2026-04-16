@@ -6,7 +6,7 @@ export const Questions: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     group: 'תוכן',
-    defaultColumns: ['title', 'author_id', 'moderation_status', 'votes', 'is_deleted', 'created_at'],
+    defaultColumns: ['title', 'author', 'moderation_status', 'votes', 'is_deleted', 'created_at'],
   },
   fields: [
     {
@@ -21,7 +21,7 @@ export const Questions: CollectionConfig = {
       label: 'תוכן',
     },
     {
-      name: 'author_id',
+      name: 'author',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'מחבר',
@@ -50,7 +50,7 @@ export const Questions: CollectionConfig = {
       defaultValue: false,
     },
     {
-      name: 'deleted_by',
+      name: 'deletedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נמחק על ידי',

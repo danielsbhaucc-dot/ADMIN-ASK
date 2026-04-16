@@ -6,11 +6,11 @@ export const ModerationAppeals: CollectionConfig = {
   admin: {
     useAsTitle: 'id',
     group: 'מודרציה',
-    defaultColumns: ['appellant_id', 'status', 'reviewed_by'],
+    defaultColumns: ['appellant', 'status', 'reviewedBy'],
   },
   fields: [
     {
-      name: 'appellant_id',
+      name: 'appellant',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'מגיש הערר',
@@ -28,7 +28,7 @@ export const ModerationAppeals: CollectionConfig = {
       ],
     },
     {
-      name: 'reviewed_by',
+      name: 'reviewedBy',
       type: 'relationship',
       relationTo: 'profiles',
       label: 'נסקר על ידי',
