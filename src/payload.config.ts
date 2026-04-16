@@ -36,8 +36,18 @@ import { ConversationTyping } from './collections/ConversationTyping'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+function stripInvisible(s: string): string {
+  return s.replace(/[\u200B-\u200D\uFEFF]/g, '')
+}
+
 function normalizeDatabaseUrl(raw: string): string {
-  let s = raw.trim().replace(/^\uFEFF/, '')
+  let s = stripInvisible(raw).trim().replace(/^\uFEFF/, '')
+  const lineKey =
+    /^(?:DATABASE_URL|POSTGRES_URL|POSTGRES_PRISMA_URL|SUPABASE_DB_URL)\s*=\s*(.+)$/im
+  const lineMatch = s.match(lineKey)
+  if (lineMatch) {
+    s = lineMatch[1].trim()
+  }
   if (
     (s.startsWith('"') && s.endsWith('"')) ||
     (s.startsWith("'") && s.endsWith("'"))
@@ -47,18 +57,33 @@ function normalizeDatabaseUrl(raw: string): string {
   return s
 }
 
-const databaseURLRaw = process.env.DATABASE_URL
-const payloadSecret = process.env.PAYLOAD_SECRET
-
-if (!databaseURLRaw) {
-  throw new Error('Missing DATABASE_URL environment variable')
+function resolveDatabaseUrlRaw(): string {
+  const keys = [
+    'DATABASE_URL',
+    'POSTGRES_URL',
+    'POSTGRES_PRISMA_URL',
+    'SUPABASE_DB_URL',
+  ] as const
+  for (const key of keys) {
+    const v = process.env[key]
+    if (v !== undefined && String(v).trim() !== '') {
+      return String(v)
+    }
+  }
+  throw new Error(
+    `Missing database connection string. Set DATABASE_URL in Vercel (Project → Settings → Environment Variables) for Production — same value Supabase gives under Connection string → URI. If you use Vercel Postgres, POSTGRES_URL also works.`,
+  )
 }
+
+const databaseURLRaw = resolveDatabaseUrlRaw()
+const payloadSecret = process.env.PAYLOAD_SECRET
 
 const databaseURL = normalizeDatabaseUrl(databaseURLRaw)
 
 if (!/^postgres(ql)?:\/\//i.test(databaseURL)) {
+  const head = databaseURL.slice(0, 24).replace(/[^\x20-\x7E]/g, '?')
   throw new Error(
-    'DATABASE_URL must be a full URI starting with postgresql:// (copy the full string from Supabase, not a fragment).',
+    `DATABASE_URL must start with postgres:// or postgresql:// (got "${head}…"). In Vercel: one line, no key name prefix, no quotes. Copy URI only from Supabase.`,
   )
 }
 
