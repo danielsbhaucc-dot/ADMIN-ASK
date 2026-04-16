@@ -1,4 +1,4 @@
-import { buildConfig } from 'payload'
+import { buildConfig, type CollectionConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { parse as parsePgConnectionString } from 'pg-connection-string'
@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 // ייבוא הקולקשן החדש למנהלים
 import { Users } from './collections/Users'
 import * as migrationPayloadAdminTables from './migrations/20260416_000000_payload_admin_tables'
+import * as migrationPayloadPreferences from './migrations/20260416_000001_payload_preferences'
 
 // ייבוא הקולקשנים הקיימים
 import { Profiles } from './collections/Profiles'
@@ -36,6 +37,11 @@ import { ConversationTyping } from './collections/ConversationTyping'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+/** בלי נעילת מסמכים — אחרת Payload יוצר payload_locked_documents* עם עשרות FK לכל קולקשן; בלי מיגרציה מלאה הטבלאות חסרות. */
+function withoutDocLocks<T extends CollectionConfig>(c: T): T {
+  return { ...c, lockDocuments: false }
+}
 
 function stripInvisible(s: string): string {
   return s.replace(/[\u200B-\u200D\uFEFF]/g, '')
@@ -194,6 +200,11 @@ export default buildConfig({
         up: migrationPayloadAdminTables.up,
         down: migrationPayloadAdminTables.down,
       },
+      {
+        name: '20260416_000001_payload_preferences',
+        up: migrationPayloadPreferences.up,
+        down: migrationPayloadPreferences.down,
+      },
     ],
   }),
 
@@ -208,41 +219,30 @@ export default buildConfig({
   },
 
   collections: [
-    // קולקשן ניהול - חייב להיות ראשון או מוגדר כ-Auth
-    Users,
-
-    // תוכן ומשתמשי האתר (לצפייה ועריכה בלבד, ללא Auth של פיילוד)
-    Profiles,
-    Questions,
-    Answers,
-
-    // מודרציה
-    AdminReports,
-    ContentPenalties,
-    ModerationAppeals,
-    ModerationActionLogs,
-    SoftDeletedContent,
-    DeletedContentRecoveryRequests,
-    ViolationRules,
-
-    // היסטוריה ואודיט
-    ContentEditHistory,
-    RoleAssignmentHistory,
-    TrustScoreAudit,
-    UserTrustScore,
-
-    // הודעות וחברתי
-    Conversations,
-    ConversationParticipants,
-    Messages,
-    StaffNotes,
-    UserFollows,
-    ProfileViews,
-
-    // אחר
-    ScoutsGuideDocument,
-    ModerationFilterPresets,
-    ConversationTyping,
+    withoutDocLocks(Users),
+    withoutDocLocks(Profiles),
+    withoutDocLocks(Questions),
+    withoutDocLocks(Answers),
+    withoutDocLocks(AdminReports),
+    withoutDocLocks(ContentPenalties),
+    withoutDocLocks(ModerationAppeals),
+    withoutDocLocks(ModerationActionLogs),
+    withoutDocLocks(SoftDeletedContent),
+    withoutDocLocks(DeletedContentRecoveryRequests),
+    withoutDocLocks(ViolationRules),
+    withoutDocLocks(ContentEditHistory),
+    withoutDocLocks(RoleAssignmentHistory),
+    withoutDocLocks(TrustScoreAudit),
+    withoutDocLocks(UserTrustScore),
+    withoutDocLocks(Conversations),
+    withoutDocLocks(ConversationParticipants),
+    withoutDocLocks(Messages),
+    withoutDocLocks(StaffNotes),
+    withoutDocLocks(UserFollows),
+    withoutDocLocks(ProfileViews),
+    withoutDocLocks(ScoutsGuideDocument),
+    withoutDocLocks(ModerationFilterPresets),
+    withoutDocLocks(ConversationTyping),
   ],
 
   secret: payloadSecret,
