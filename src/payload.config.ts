@@ -58,6 +58,11 @@ function normalizeDatabaseUrl(raw: string): string {
   return s
 }
 
+const vercelEnvHint =
+  process.env.VERCEL === '1'
+    ? ' On Vercel: add the variable for the same environment you deploy (Production / Preview), save, then Redeploy (Clear build cache if the value changed).'
+    : ''
+
 function resolveDatabaseUrlRaw(): string {
   const keys = [
     'DATABASE_URL',
@@ -72,7 +77,7 @@ function resolveDatabaseUrlRaw(): string {
     }
   }
   throw new Error(
-    `Missing database connection string. Set DATABASE_URL in Vercel (Project → Settings → Environment Variables) for Production — same value Supabase gives under Connection string → URI. If you use Vercel Postgres, POSTGRES_URL also works.`,
+    `Missing database connection string. Set DATABASE_URL (or POSTGRES_URL, etc.) — Supabase: Database → Connection string → URI.${vercelEnvHint}`,
   )
 }
 
@@ -93,7 +98,7 @@ try {
   parsed = parsePgConnectionString(databaseURL)
 } catch {
   throw new Error(
-    'DATABASE_URL is not a valid Postgres URI. Check for quotes, line breaks, or special characters in the password (encode with encodeURIComponent).',
+    `DATABASE_URL is not a valid Postgres URI. Use one line, no surrounding quotes, no "KEY=" inside the value; encode special characters in the password (encodeURIComponent).${vercelEnvHint}`,
   )
 }
 
@@ -112,7 +117,9 @@ if (databaseHost !== 'localhost' && !databaseHost.includes('.')) {
 }
 
 if (!payloadSecret) {
-  throw new Error('Missing PAYLOAD_SECRET environment variable')
+  throw new Error(
+    `Missing PAYLOAD_SECRET environment variable.${vercelEnvHint}`,
+  )
 }
 
 /** Vercel/Lambda often hit SELF_SIGNED_CERT_IN_CHAIN with Supabase; lenient SSL keeps TLS but skips CA verify. Set DATABASE_SSL_REJECT_UNAUTHORIZED=true to enforce verification. */
