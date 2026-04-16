@@ -1,170 +1,209 @@
-/* AskHub – לוח פרימיום: צבעוני בלי סגול, Rubik, טבלאות, מפרידים, פסי הדגשה תחת כותרות */
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,500&subset=hebrew,latin&display=swap');
+/* AskHub Console Pro — Heebo, סרגל כהה, גרדיאנט אינדיגו-ציאן, כרטיסים לבנים */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&subset=hebrew,latin&display=swap');
+
+html {
+  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar,
+.template-default__wrap *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-track,
+.template-default__wrap *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+.template-default__wrap *::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+  border: 2px solid #f3f4f8;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+.template-default__wrap *::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
 
 @layer payload {
   :root {
-    /* מותג: טיל / ציאן / אבן חמה – ללא סגול */
-    --askhub-accent: #0d9488;
-    --askhub-accent-hover: #0f766e;
-    --askhub-accent-soft: rgba(13, 148, 136, 0.14);
-    --askhub-accent-muted: rgba(13, 148, 136, 0.45);
-    --askhub-amber: #d97706;
-    --askhub-amber-soft: rgba(217, 119, 6, 0.12);
-    --askhub-sky: #0284c7;
-    --askhub-sky-soft: rgba(2, 132, 199, 0.12);
-    --askhub-edge: linear-gradient(
-      125deg,
-      #0d9488 0%,
-      #0891b2 35%,
-      #0284c7 65%,
-      #d97706 100%
-    );
-    --askhub-accent-bar: linear-gradient(90deg, #0d9488, #0891b2, #d97706);
-    --askhub-glow-a: rgba(13, 148, 136, 0.18);
-    --askhub-glow-b: rgba(2, 132, 199, 0.14);
-    --askhub-glow-c: rgba(217, 119, 6, 0.1);
+    --nav-width: 18rem;
+
+    --askhub-page: #f3f4f8;
+    --askhub-sidebar: #0b1121;
+    --askhub-sidebar-border: rgba(255, 255, 255, 0.06);
+    --askhub-cyan: #22d3ee;
+    --askhub-indigo: #4f46e5;
+    --askhub-indigo-deep: #4338ca;
+    --askhub-hero: linear-gradient(135deg, #4338ca 0%, #2563eb 42%, #06b6d4 100%);
+    --askhub-accent: #4f46e5;
+    --askhub-accent-hover: #4338ca;
+    --askhub-accent-soft: rgba(79, 70, 229, 0.12);
+    --askhub-accent-bar: linear-gradient(90deg, #4f46e5, #22d3ee, #f43f5e);
 
     --font-body:
-      'Rubik', 'Heebo', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
-      Arial, sans-serif;
+      'Heebo', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial,
+      sans-serif;
 
-    --style-radius-s: 8px;
-    --style-radius-m: 12px;
+    --style-radius-s: 10px;
+    --style-radius-m: 14px;
     --style-radius-l: 18px;
 
-    /* נייטרלים חמים–אפורים (לא סגלגלים) */
-    --color-base-0: rgb(252, 252, 251);
-    --color-base-50: rgb(247, 246, 243);
-    --color-base-100: rgb(240, 238, 233);
-    --color-base-150: rgb(228, 225, 218);
-    --color-base-200: rgb(215, 211, 202);
-    --color-base-250: rgb(200, 196, 186);
-    --color-base-300: rgb(184, 180, 170);
-    --color-base-350: rgb(168, 163, 152);
-    --color-base-400: rgb(150, 145, 134);
-    --color-base-450: rgb(132, 127, 116);
-    --color-base-500: rgb(115, 110, 100);
-    --color-base-550: rgb(98, 94, 85);
-    --color-base-600: rgb(82, 78, 71);
-    --color-base-650: rgb(68, 65, 59);
-    --color-base-700: rgb(56, 53, 48);
-    --color-base-750: rgb(45, 43, 39);
-    --color-base-800: rgb(36, 34, 31);
-    --color-base-850: rgb(28, 27, 24);
-    --color-base-900: rgb(22, 21, 19);
-    --color-base-950: rgb(16, 15, 14);
-    --color-base-1000: rgb(10, 10, 9);
+    --color-base-0: rgb(255, 255, 255);
+    --color-base-50: rgb(248, 250, 252);
+    --color-base-100: rgb(241, 245, 249);
+    --color-base-150: rgb(226, 232, 240);
+    --color-base-200: rgb(203, 213, 225);
+    --color-base-250: rgb(186, 199, 216);
+    --color-base-300: rgb(148, 163, 184);
+    --color-base-350: rgb(125, 140, 165);
+    --color-base-400: rgb(100, 116, 139);
+    --color-base-450: rgb(85, 100, 122);
+    --color-base-500: rgb(71, 85, 105);
+    --color-base-550: rgb(60, 72, 90);
+    --color-base-600: rgb(51, 65, 85);
+    --color-base-650: rgb(45, 58, 76);
+    --color-base-700: rgb(39, 50, 66);
+    --color-base-750: rgb(32, 42, 56);
+    --color-base-800: rgb(30, 41, 59);
+    --color-base-850: rgb(26, 35, 48);
+    --color-base-900: rgb(22, 30, 41);
+    --color-base-950: rgb(17, 24, 33);
+    --color-base-1000: rgb(11, 17, 33);
 
-    --color-success-500: rgb(13, 148, 136);
-    --color-success-400: rgb(45, 212, 191);
-    --color-error-500: rgb(220, 60, 75);
-    --color-warning-500: rgb(217, 119, 6);
+    --color-success-500: rgb(16, 185, 129);
+    --color-success-400: rgb(52, 211, 153);
+    --color-error-500: rgb(244, 63, 94);
+    --color-warning-500: rgb(245, 158, 11);
 
-    --theme-border-color: rgba(13, 148, 136, 0.22);
+    --theme-border-color: rgba(79, 70, 229, 0.18);
+    --theme-bg: var(--askhub-page);
+    --theme-text: rgb(30, 41, 59);
+    --theme-success-500: rgb(16, 185, 129);
   }
 
   html[data-theme='dark'] {
-    --color-base-0: rgb(15, 17, 18);
-    --color-base-50: rgb(20, 23, 24);
-    --color-base-100: rgb(28, 32, 33);
-    --color-base-150: rgb(36, 40, 42);
-    --color-base-200: rgb(44, 49, 51);
-    --color-base-250: rgb(52, 58, 60);
-    --color-base-300: rgb(62, 68, 71);
-    --color-base-350: rgb(74, 80, 84);
-    --color-base-400: rgb(88, 94, 98);
-    --color-base-450: rgb(102, 108, 112);
-    --color-base-500: rgb(118, 124, 128);
-    --color-base-550: rgb(134, 140, 144);
-    --color-base-600: rgb(150, 156, 160);
-    --color-base-650: rgb(168, 174, 178);
-    --color-base-700: rgb(186, 192, 196);
-    --color-base-750: rgb(204, 210, 214);
-    --color-base-800: rgb(222, 228, 232);
-    --color-base-850: rgb(232, 236, 238);
-    --color-base-900: rgb(240, 243, 245);
-    --color-base-950: rgb(246, 248, 249);
-    --color-base-1000: rgb(252, 252, 252);
+    --askhub-page: #0f172a;
+    --theme-bg: var(--askhub-page);
+    --theme-text: rgb(241, 245, 249);
+    --theme-border-color: rgba(34, 211, 238, 0.22);
 
-    --theme-border-color: rgba(45, 212, 191, 0.28);
+    --color-base-0: rgb(15, 23, 42);
+    --color-base-50: rgb(22, 30, 49);
+    --color-base-100: rgb(28, 38, 61);
+    --color-base-150: rgb(36, 48, 74);
+    --color-base-200: rgb(44, 58, 88);
+    --color-base-250: rgb(52, 68, 102);
+    --color-base-300: rgb(65, 84, 118);
+    --color-base-350: rgb(80, 100, 136);
+    --color-base-400: rgb(100, 122, 156);
+    --color-base-450: rgb(120, 144, 176);
+    --color-base-500: rgb(142, 164, 194);
+    --color-base-550: rgb(162, 182, 210);
+    --color-base-600: rgb(184, 200, 224);
+    --color-base-650: rgb(204, 216, 236);
+    --color-base-700: rgb(222, 230, 246);
+    --color-base-750: rgb(232, 238, 250);
+    --color-base-800: rgb(241, 245, 252);
+    --color-base-850: rgb(246, 248, 253);
+    --color-base-900: rgb(250, 251, 254);
+    --color-base-950: rgb(252, 253, 255);
+    --color-base-1000: rgb(255, 255, 255);
   }
 
   html {
     font-family: var(--font-body);
     line-height: 1.5;
     letter-spacing: 0.01em;
-    background-color: var(--theme-bg);
-    background-image:
-      radial-gradient(1000px 520px at 100% -5%, var(--askhub-glow-a), transparent 58%),
-      radial-gradient(880px 480px at -10% 25%, var(--askhub-glow-b), transparent 52%),
-      radial-gradient(720px 420px at 85% 95%, var(--askhub-glow-c), transparent 48%),
-      linear-gradient(175deg, var(--theme-elevation-50) 0%, var(--theme-elevation-0) 55%, var(--theme-elevation-100) 100%);
-    background-attachment: fixed;
+    background-color: var(--askhub-page) !important;
+    background-image: none !important;
   }
 
   html[data-theme='dark'] {
-    background-image:
-      radial-gradient(900px 480px at 100% 0%, rgba(13, 148, 136, 0.12), transparent 55%),
-      radial-gradient(800px 420px at 0% 35%, rgba(2, 132, 199, 0.1), transparent 50%),
-      radial-gradient(640px 380px at 75% 100%, rgba(217, 119, 6, 0.08), transparent 45%),
-      linear-gradient(175deg, var(--theme-elevation-50) 0%, var(--theme-elevation-0) 100%);
+    background-image: none !important;
   }
 
-  /* מעטפת ראשית */
+  /* אזור ראשי */
   .template-default__wrap {
     position: relative;
-    background: rgba(252, 252, 251, 0.72);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    isolation: isolate;
+    background: var(--askhub-page) !important;
     border-radius: var(--style-radius-l);
-    margin: calc(var(--base) * 0.75);
-    padding: calc(var(--base) * 0.15) 0;
+    margin: calc(var(--base) * 0.65);
+    padding: 0;
     box-shadow:
-      0 2px 4px -1px rgba(15, 23, 42, 0.06),
-      0 20px 40px -16px rgba(15, 23, 42, 0.12),
-      0 0 0 1px rgba(13, 148, 136, 0.1);
-    border: 1px solid rgba(13, 148, 136, 0.14);
+      0 10px 40px -12px rgba(15, 23, 42, 0.12),
+      0 0 0 1px rgba(148, 163, 184, 0.12);
+    border: 1px solid rgba(148, 163, 184, 0.14);
     overflow-x: hidden;
     overflow-y: visible;
-  }
-
-  html[data-theme='dark'] .template-default__wrap {
-    background: rgba(20, 23, 24, 0.78);
-    box-shadow:
-      0 2px 6px -1px rgba(0, 0, 0, 0.35),
-      0 24px 48px -20px rgba(0, 0, 0, 0.45),
-      0 0 0 1px rgba(45, 212, 191, 0.12);
-    border-color: rgba(45, 212, 191, 0.14);
   }
 
   .template-default__wrap::before {
     content: '';
     position: absolute;
-    inset: 0;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: calc(var(--app-header-height) + 3.5rem);
+    background: var(--askhub-hero);
     border-radius: inherit;
-    padding: 1px;
-    background: var(--askhub-edge);
-    opacity: 0.35;
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+    z-index: 0;
     pointer-events: none;
   }
 
-  /* ניווט */
-  .nav {
-    position: relative;
-    background: linear-gradient(
-      195deg,
-      rgba(255, 255, 255, 0.97) 0%,
-      rgba(247, 246, 243, 0.94) 100%
-    ) !important;
+  .template-default__wrap::after {
+    content: '';
+    position: absolute;
+    inset-block-start: -4rem;
+    inset-inline-start: -5rem;
+    width: 18rem;
+    height: 18rem;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    filter: blur(48px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
   }
 
-  html[data-theme='dark'] .nav {
-    background: linear-gradient(195deg, rgba(24, 27, 28, 0.98) 0%, rgba(15, 17, 18, 0.96) 100%) !important;
+  html[data-theme='dark'] .template-default__wrap {
+    box-shadow:
+      0 12px 40px -8px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(34, 211, 238, 0.12);
+    border-color: rgba(34, 211, 238, 0.14);
+  }
+
+  /* סרגל ניווט כהה */
+  .nav {
+    position: relative;
+    background: var(--askhub-sidebar) !important;
+    border-inline-end: none !important;
+    border-inline-start: 1px solid var(--askhub-sidebar-border) !important;
+    box-shadow: -12px 0 40px -12px rgba(0, 0, 0, 0.35);
+  }
+
+  [dir='rtl'] .nav {
+    border-inline-start: 1px solid var(--askhub-sidebar-border) !important;
+    border-inline-end: none !important;
+  }
+
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    width: 100%;
+    height: 16rem;
+    background: radial-gradient(ellipse at top right, rgba(37, 99, 235, 0.22), transparent 65%);
+    filter: blur(32px);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .nav::after {
@@ -174,36 +213,74 @@
     bottom: 0;
     inset-inline-end: 0;
     width: 3px;
-    background: var(--askhub-edge);
-    opacity: 0.85;
+    background: linear-gradient(180deg, rgba(34, 211, 238, 0.5), rgba(79, 70, 229, 0.35));
+    opacity: 0.65;
     pointer-events: none;
+    z-index: 1;
+  }
+
+  .nav__scroll {
+    position: relative;
+    z-index: 2;
   }
 
   .nav-group {
-    border-bottom: 1px solid rgba(13, 148, 136, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     padding-bottom: calc(var(--base) * 0.35);
     margin-bottom: calc(var(--base) * 0.35);
-  }
-
-  html[data-theme='dark'] .nav-group {
-    border-bottom-color: rgba(45, 212, 191, 0.12);
   }
 
   .nav-group__label {
     display: inline-flex;
     align-items: center;
     gap: 0.45em;
+    color: rgba(148, 163, 184, 0.95) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03em;
+  }
+
+  .nav__label {
+    color: rgba(148, 163, 184, 0.85) !important;
+  }
+
+  .nav a.nav__link {
+    color: rgba(203, 213, 225, 0.92) !important;
+    border-radius: var(--style-radius-m);
+    padding-block: 0.35rem;
+    padding-inline: 0.75rem 1.75rem;
+    margin-inline-end: 0.25rem;
+    text-decoration: none !important;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .nav a.nav__link:hover,
+  .nav a.nav__link:focus-visible {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: rgb(248, 250, 252) !important;
+    text-decoration: none !important;
+  }
+
+  .nav a.nav__link.active {
+    color: rgb(248, 250, 252) !important;
     font-weight: 700 !important;
-    letter-spacing: 0.02em;
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.14), transparent) !important;
+  }
+
+  .nav__link-indicator {
+    background: linear-gradient(180deg, var(--askhub-cyan), var(--askhub-indigo)) !important;
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.65);
+    width: 3px !important;
+    border-radius: 999px !important;
   }
 
   .nav-group__label::before {
     font-size: 1.05em;
     line-height: 1;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.35));
   }
 
-  
   [id='nav-group-תוכן'] .nav-group__label::before {
     content: '\1f4da';
   }
@@ -302,26 +379,311 @@
     content: '\2328';
   }
 
-  .app-header {
-    background: rgba(252, 252, 251, 0.82) !important;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(13, 148, 136, 0.14) !important;
-    box-shadow: 0 6px 20px -10px rgba(15, 23, 42, 0.12);
+  /* כותרת עליונה — זכוכית על הגרדיאנט */
+  .template-default__wrap .app-header {
+    position: relative;
+    z-index: 2;
+    background: rgba(15, 23, 42, 0.14) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: none !important;
+    color: rgba(248, 250, 252, 0.95);
   }
 
-  html[data-theme='dark'] .app-header {
-    background: rgba(20, 23, 24, 0.85) !important;
-    border-bottom-color: rgba(45, 212, 191, 0.16) !important;
+  .template-default__wrap .app-header a,
+  .template-default__wrap .app-header button:not([class*='popup']) {
+    color: inherit;
   }
 
-  /* כותרות רשימה / מסמך – פס הדגשה */
+  .template-default__wrap .app-header svg {
+    stroke: currentColor;
+    opacity: 0.92;
+  }
+
+  .template-default__wrap .step-nav:after {
+    background: linear-gradient(
+      to left,
+      transparent,
+      rgba(67, 56, 202, 0.25)
+    ) !important;
+  }
+
+  [dir='rtl'] .template-default__wrap .step-nav:after {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(67, 56, 202, 0.25)
+    ) !important;
+  }
+
+  html[data-theme='dark'] .template-default__wrap .app-header {
+    background: rgba(15, 23, 42, 0.35) !important;
+  }
+
+  /* מותג בסרגל */
+  .askhub-console-brand {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--base) * 0.65);
+    padding: calc(var(--base) * 0.45) 0;
+    margin-bottom: calc(var(--base) * 0.35);
+  }
+
+  .askhub-console-brand__mark {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--style-radius-m);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #3b82f6, #22d3ee);
+    color: #fff;
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+  }
+
+  .askhub-console-brand__title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .askhub-console-brand__subtitle {
+    font-size: calc(var(--base) * 0.62);
+    font-weight: 700;
+    color: var(--askhub-cyan);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.15em;
+  }
+
+  .askhub-nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.15rem;
+    height: 2.15rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #3b82f6, #22d3ee);
+    color: #f8fafc;
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+  }
+
+  .askhub-nav-icon__svg {
+    display: block;
+  }
+
+  /* דשבורד — כרטיסי סטטיסטיקה */
+  .askhub-dashboard-hero {
+    position: relative;
+    z-index: 1;
+    padding-inline: calc(var(--base) * 0.85);
+    padding-block-end: calc(var(--base) * 1);
+  }
+
+  .askhub-dashboard-hero__intro {
+    margin-bottom: calc(var(--base) * 1.1);
+  }
+
+  .askhub-dashboard-hero__title {
+    font-size: calc(var(--base) * 1.35);
+    font-weight: 800;
+    color: var(--theme-text);
+    margin: 0 0 calc(var(--base) * 0.45);
+    letter-spacing: -0.02em;
+  }
+
+  .askhub-dashboard-hero__desc {
+    margin: 0;
+    font-size: calc(var(--base) * 0.78);
+    color: var(--theme-elevation-600);
+    max-width: 42rem;
+    line-height: 1.6;
+  }
+
+  .askhub-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: calc(var(--base) * 0.85);
+    margin-bottom: calc(var(--base) * 1.15);
+  }
+
+  .askhub-stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--base) * 0.65);
+    padding: calc(var(--base) * 0.9);
+    background: #fff;
+    border-radius: var(--style-radius-l);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 0 12px 36px -16px rgba(15, 23, 42, 0.12);
+    transition: transform 0.2s ease;
+  }
+
+  .askhub-stat-card:hover {
+    transform: translateY(-3px);
+  }
+
+  html[data-theme='dark'] .askhub-stat-card {
+    background: var(--theme-elevation-50);
+    border-color: rgba(34, 211, 238, 0.12);
+    box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.4);
+  }
+
+  .askhub-stat-card__label {
+    margin: 0 0 0.25rem;
+    font-size: calc(var(--base) * 0.68);
+    font-weight: 700;
+    color: var(--theme-elevation-500);
+  }
+
+  .askhub-stat-card__value {
+    margin: 0 0 0.35rem;
+    font-size: calc(var(--base) * 1.05);
+    font-weight: 800;
+    color: var(--theme-text);
+  }
+
+  .askhub-stat-card__trend {
+    margin: 0;
+    font-size: calc(var(--base) * 0.65);
+    font-weight: 700;
+  }
+
+  .askhub-stat-card__trend--up {
+    color: rgb(5, 150, 105);
+  }
+
+  .askhub-stat-card__trend--down {
+    color: rgb(225, 29, 72);
+  }
+
+  .askhub-stat-card__icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: var(--style-radius-m);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .askhub-stat-card--blue .askhub-stat-card__icon {
+    background: linear-gradient(135deg, #3b82f6, #22d3ee);
+    box-shadow: 0 8px 24px rgba(34, 211, 238, 0.25);
+  }
+
+  .askhub-stat-card--emerald .askhub-stat-card__icon {
+    background: linear-gradient(135deg, #34d399, #14b8a6);
+    box-shadow: 0 8px 24px rgba(52, 211, 153, 0.25);
+  }
+
+  .askhub-stat-card--rose .askhub-stat-card__icon {
+    background: linear-gradient(135deg, #f43f5e, #ec4899);
+    box-shadow: 0 8px 24px rgba(244, 63, 94, 0.22);
+  }
+
+  /* כרטיס ברוכים הבאים */
+  .askhub-welcome-card {
+    margin-block-end: calc(var(--base) * 1.2);
+    padding: calc(var(--base) * 1.1);
+    border-radius: var(--style-radius-l);
+    background: #fff;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 0 14px 40px -18px rgba(15, 23, 42, 0.14);
+    position: relative;
+    overflow: hidden;
+  }
+
+  html[data-theme='dark'] .askhub-welcome-card {
+    background: var(--theme-elevation-50);
+    border-color: rgba(34, 211, 238, 0.14);
+  }
+
+  .askhub-welcome-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.45), rgba(34, 211, 238, 0.35));
+    opacity: 0.35;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .askhub-welcome-card__title {
+    position: relative;
+    font-size: calc(var(--base) * 1.02);
+    font-weight: 800;
+    margin: 0 0 calc(var(--base) * 0.5);
+    color: var(--theme-text);
+    padding-bottom: calc(var(--base) * 0.4);
+  }
+
+  .askhub-welcome-card__title::after {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    bottom: 0;
+    width: 4rem;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--askhub-accent-bar);
+  }
+
+  .askhub-welcome-card__text {
+    position: relative;
+    margin: 0 0 calc(var(--base) * 0.85);
+    line-height: 1.65;
+    color: var(--theme-elevation-600);
+    max-width: 54rem;
+  }
+
+  .askhub-welcome-card__chips {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--base) * 0.5);
+  }
+
+  .askhub-welcome-card__chips span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: calc(var(--base) * 0.32) calc(var(--base) * 0.7);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: calc(var(--base) * 0.66);
+    background: rgba(248, 250, 252, 0.95);
+    border: 1px solid rgba(79, 70, 229, 0.18);
+    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.08);
+  }
+
+  html[data-theme='dark'] .askhub-welcome-card__chips span {
+    background: rgba(30, 41, 59, 0.75);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+
+  /* כותרות רשימה */
   .collection-list .list-header__title,
   .list-drawer .list-header__title,
   .doc-header__title,
   .document-header__title,
   .dashboard__label {
     position: relative;
+    z-index: 1;
     padding-bottom: calc(var(--base) * 0.45);
     margin-bottom: calc(var(--base) * 0.35);
   }
@@ -340,20 +702,13 @@
     height: 3px;
     border-radius: 3px;
     background: var(--askhub-accent-bar);
-    box-shadow: 0 1px 4px rgba(13, 148, 136, 0.35);
-  }
-
-  h1,
-  .h1,
-  h2,
-  .h2 {
-    letter-spacing: 0.02em;
+    box-shadow: 0 1px 6px rgba(79, 70, 229, 0.35);
   }
 
   /* טאבים */
   .tabs-field__tabs {
     gap: 0.25rem;
-    border-bottom: 1px solid rgba(13, 148, 136, 0.12);
+    border-bottom: 1px solid rgba(79, 70, 229, 0.12);
     padding-bottom: 0.25rem;
   }
 
@@ -371,70 +726,58 @@
   .tabs-field__tab-button--active {
     color: var(--askhub-accent) !important;
     box-shadow: inset 0 -3px 0 0 var(--askhub-accent);
-    background: rgba(13, 148, 136, 0.06) !important;
-  }
-
-  html[data-theme='dark'] .tabs-field__tab-button--active {
-    background: rgba(45, 212, 191, 0.08) !important;
+    background: rgba(79, 70, 229, 0.06) !important;
   }
 
   /* טבלאות */
   .table-wrap {
+    position: relative;
+    z-index: 1;
     border-radius: var(--style-radius-m);
     overflow: auto;
-    border: 1px solid rgba(13, 148, 136, 0.16);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     background: var(--theme-elevation-0);
-    box-shadow:
-      0 1px 3px rgba(15, 23, 42, 0.05),
-      0 10px 28px -12px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 10px 36px -14px rgba(15, 23, 42, 0.1);
   }
 
   html[data-theme='dark'] .table-wrap {
-    border-color: rgba(45, 212, 191, 0.18);
-    box-shadow: 0 10px 32px -12px rgba(0, 0, 0, 0.45);
+    border-color: rgba(34, 211, 238, 0.16);
   }
 
   .collection-list .table thead th,
   .table thead th {
-    background: linear-gradient(180deg, var(--theme-elevation-50) 0%, var(--theme-elevation-100) 100%);
+    background: rgba(248, 250, 252, 0.95);
     font-weight: 700 !important;
     text-transform: none;
     letter-spacing: 0.02em;
-    border-bottom: 2px solid rgba(13, 148, 136, 0.2) !important;
-    position: sticky;
-    top: 0;
-    z-index: 1;
+    border-bottom: 2px solid rgba(79, 70, 229, 0.15) !important;
   }
 
   html[data-theme='dark'] .collection-list .table thead th,
   html[data-theme='dark'] .table thead th {
-    border-bottom-color: rgba(45, 212, 191, 0.25) !important;
+    background: var(--theme-elevation-100);
+    border-bottom-color: rgba(34, 211, 238, 0.22) !important;
   }
 
   .collection-list .table tbody tr:nth-child(even),
   .table tbody tr:nth-child(even) {
-    background: rgba(13, 148, 136, 0.04);
-  }
-
-  html[data-theme='dark'] .collection-list .table tbody tr:nth-child(even),
-  html[data-theme='dark'] .table tbody tr:nth-child(even) {
-    background: rgba(45, 212, 191, 0.05);
+    background: rgba(79, 70, 229, 0.035);
   }
 
   .collection-list .table tbody tr:hover,
   .table tbody tr:hover {
-    background: var(--askhub-accent-soft) !important;
+    background: rgba(79, 70, 229, 0.08) !important;
   }
 
   .collection-list .table td,
   .collection-list .table th,
   .table td,
   .table th {
-    border-color: rgba(13, 148, 136, 0.1) !important;
+    border-color: rgba(148, 163, 184, 0.14) !important;
     padding: calc(var(--base) * 0.45) calc(var(--base) * 0.55) !important;
   }
 
-  /* כפתורים ושדות */
+  /* כפתורים */
   .btn {
     border-radius: var(--style-radius-m) !important;
     transition:
@@ -447,14 +790,14 @@
   .btn--icon-style-primary {
     background: var(--askhub-accent) !important;
     border-color: var(--askhub-accent) !important;
-    box-shadow: 0 2px 10px -2px rgba(13, 148, 136, 0.45);
+    box-shadow: 0 4px 14px -2px rgba(79, 70, 229, 0.45);
   }
 
   .btn--style-primary:hover:not(:disabled),
   .btn--icon-style-primary:hover:not(:disabled) {
     background: var(--askhub-accent-hover) !important;
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px -4px rgba(13, 148, 136, 0.4);
+    box-shadow: 0 8px 20px -4px rgba(79, 70, 229, 0.4);
   }
 
   .btn:hover:not(:disabled) {
@@ -466,7 +809,7 @@
   select,
   .input {
     border-radius: var(--style-radius-m) !important;
-    border-color: rgba(13, 148, 136, 0.22) !important;
+    border-color: rgba(79, 70, 229, 0.22) !important;
     transition:
       border-color 0.15s ease,
       box-shadow 0.15s ease;
@@ -490,202 +833,21 @@
     border-radius: 999px !important;
   }
 
-  /* מפרידים כלליים */
-  .collection-list__wrap > * + *,
-  .dashboard__wrap > * + * {
-    scroll-margin-top: calc(var(--base) * 2);
-  }
-
   hr,
   .separator {
     border: none;
-    border-top: 1px solid rgba(13, 148, 136, 0.12);
+    border-top: 1px solid rgba(79, 70, 229, 0.1);
     margin: calc(var(--base) * 0.75) 0;
-  }
-
-  /* באנר עליון */
-  .askhub-top-banner {
-    width: 100%;
-    background: var(--askhub-edge);
-    color: #f8fafc;
-    font-weight: 700;
-    font-size: calc(var(--base) * 0.72);
-    letter-spacing: 0.02em;
-    box-shadow: 0 4px 18px -6px rgba(13, 148, 136, 0.4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .askhub-top-banner__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: calc(var(--base) * 0.55);
-    padding: calc(var(--base) * 0.5) calc(var(--base) * 0.85);
-    text-align: center;
-    flex-wrap: wrap;
-  }
-
-  .askhub-top-banner__emoji {
-    font-size: 1.2em;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
-  }
-
-  /* כרטיס דשבורד */
-  .askhub-welcome-card {
-    margin-block-end: calc(var(--base) * 1.35);
-    padding: calc(var(--base) * 1.2);
-    border-radius: var(--style-radius-l);
-    background: linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(240, 253, 250, 0.9) 40%,
-      rgba(224, 242, 254, 0.88) 100%
-    );
-    border: 1px solid rgba(13, 148, 136, 0.18);
-    box-shadow:
-      0 14px 36px -18px rgba(15, 23, 42, 0.18),
-      0 0 0 1px rgba(13, 148, 136, 0.08);
-    position: relative;
-    overflow: hidden;
-  }
-
-  html[data-theme='dark'] .askhub-welcome-card {
-    background: linear-gradient(
-      145deg,
-      rgba(24, 28, 30, 0.96) 0%,
-      rgba(19, 40, 42, 0.92) 50%,
-      rgba(22, 34, 48, 0.94) 100%
-    );
-    border-color: rgba(45, 212, 191, 0.2);
-    box-shadow:
-      0 14px 36px -14px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(45, 212, 191, 0.1);
-  }
-
-  .askhub-welcome-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: var(--askhub-edge);
-    opacity: 0.4;
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  .askhub-welcome-card__title {
-    position: relative;
-    font-size: calc(var(--base) * 1.08);
-    font-weight: 800;
-    margin: 0 0 calc(var(--base) * 0.5);
-    color: var(--theme-text);
-    padding-bottom: calc(var(--base) * 0.4);
-  }
-
-  .askhub-welcome-card__title::after {
-    content: '';
-    position: absolute;
-    inset-inline-start: 0;
-    bottom: 0;
-    width: 4rem;
-    height: 3px;
-    border-radius: 3px;
-    background: var(--askhub-accent-bar);
-  }
-
-  .askhub-welcome-card__text {
-    position: relative;
-    margin: 0 0 calc(var(--base) * 0.85);
-    line-height: 1.65;
-    color: var(--theme-elevation-650);
-    max-width: 54rem;
-  }
-
-  html[data-theme='dark'] .askhub-welcome-card__text {
-    color: var(--theme-elevation-450);
-  }
-
-  .askhub-welcome-card__chips {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    gap: calc(var(--base) * 0.5);
-  }
-
-  .askhub-welcome-card__chips span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35em;
-    padding: calc(var(--base) * 0.32) calc(var(--base) * 0.7);
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: calc(var(--base) * 0.66);
-    background: rgba(255, 255, 255, 0.82);
-    border: 1px solid rgba(13, 148, 136, 0.22);
-    box-shadow: 0 2px 8px -2px rgba(13, 148, 136, 0.15);
-  }
-
-  html[data-theme='dark'] .askhub-welcome-card__chips span {
-    background: rgba(28, 32, 34, 0.85);
-    border-color: rgba(45, 212, 191, 0.22);
-  }
-
-  .askhub-nav-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.1rem;
-    height: 2.1rem;
-    font-size: 1.2rem;
-    border-radius: 12px;
-    background: var(--askhub-edge);
-    color: #f8fafc;
-    box-shadow: 0 4px 14px -3px rgba(13, 148, 136, 0.45);
-  }
-
-  .askhub-login-logo {
-    display: flex;
-    align-items: center;
-    gap: calc(var(--base) * 0.65);
-    padding: calc(var(--base) * 0.5) 0;
-  }
-
-  .askhub-login-logo__mark {
-    font-size: 2.35rem;
-    line-height: 1;
-    filter: drop-shadow(0 4px 10px rgba(13, 148, 136, 0.35));
-  }
-
-  .askhub-login-logo__title {
-    font-size: 1.65rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    background: var(--askhub-edge);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .askhub-login-logo__subtitle {
-    font-size: calc(var(--base) * 0.7);
-    font-weight: 600;
-    color: var(--theme-elevation-600);
-    margin-top: 0.15em;
-  }
-
-  html[data-theme='dark'] .askhub-login-logo__subtitle {
-    color: var(--theme-elevation-450);
   }
 
   @media (max-width: 768px) {
     .template-default__wrap {
-      margin: calc(var(--base) * 0.3);
+      margin: calc(var(--base) * 0.35);
       border-radius: var(--style-radius-m);
+    }
+
+    .askhub-stats-grid {
+      grid-template-columns: 1fr;
     }
   }
 }
