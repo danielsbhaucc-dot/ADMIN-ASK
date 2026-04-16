@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 
 // ייבוא הקולקשן החדש למנהלים
 import { Users } from './collections/Users'
+import * as migrationPayloadAdminTables from './migrations/20260416_000000_payload_admin_tables'
 
 // ייבוא הקולקשנים הקיימים
 import { Profiles } from './collections/Profiles'
@@ -179,6 +180,14 @@ export default buildConfig({
     },
     // חשוב: מונע שינויים אוטומטיים בסכימה הקיימת שלך
     push: false,
+    migrationDir: path.resolve(dirname, 'migrations'),
+    prodMigrations: [
+      {
+        name: '20260416_000000_payload_admin_tables',
+        up: migrationPayloadAdminTables.up,
+        down: migrationPayloadAdminTables.down,
+      },
+    ],
   }),
 
   editor: lexicalEditor({}),
