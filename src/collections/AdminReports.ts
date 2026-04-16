@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const AdminReports: CollectionConfig = {
   slug: 'admin-reports',
+  labels: { singular: 'דיווח', plural: 'דיווחים' },
   dbName: 'admin_reports',
   admin: {
     useAsTitle: 'reason',

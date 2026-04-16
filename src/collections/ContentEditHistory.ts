@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const ContentEditHistory: CollectionConfig = {
   slug: 'content-edit-history',
+  labels: { singular: 'עריכת תוכן', plural: 'היסטוריית עריכות תוכן' },
   dbName: 'content_edit_history',
   admin: {
     useAsTitle: 'content_type',

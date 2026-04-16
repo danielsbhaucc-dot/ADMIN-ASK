@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const DeletedContentRecoveryRequests: CollectionConfig = {
   slug: 'deleted-content-recovery-requests',
+  labels: { singular: 'בקשת שחזור תוכן', plural: 'בקשות שחזור תוכן' },
   dbName: 'deleted_content_recovery_requests',
   admin: {
     useAsTitle: 'target_type',

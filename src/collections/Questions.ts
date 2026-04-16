@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const Questions: CollectionConfig = {
   slug: 'questions',
+  labels: { singular: 'שאלה', plural: 'שאלות' },
   dbName: 'questions',
   admin: {
     useAsTitle: 'title',

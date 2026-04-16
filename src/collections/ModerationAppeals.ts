@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const ModerationAppeals: CollectionConfig = {
   slug: 'moderation-appeals',
+  labels: { singular: 'ערר מודרציה', plural: 'עררי מודרציה' },
   dbName: 'moderation_appeals',
   admin: {
     useAsTitle: 'id',

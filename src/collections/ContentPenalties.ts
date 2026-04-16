@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const ContentPenalties: CollectionConfig = {
   slug: 'content-penalties',
+  labels: { singular: 'עונש תוכן', plural: 'עונשי תוכן' },
   dbName: 'content_penalties',
   admin: {
     useAsTitle: 'id',

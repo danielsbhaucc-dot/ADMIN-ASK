@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const Conversations: CollectionConfig = {
   slug: 'conversations',
+  labels: { singular: 'שיחה', plural: 'שיחות' },
   dbName: 'conversations',
   admin: {
     useAsTitle: 'id',
@@ -27,6 +28,7 @@ export const Conversations: CollectionConfig = {
 
 export const ConversationParticipants: CollectionConfig = {
   slug: 'conversation-participants',
+  labels: { singular: 'משתתף בשיחה', plural: 'משתתפי שיחה' },
   dbName: 'conversation_participants',
   admin: {
     useAsTitle: 'id',
@@ -65,6 +67,7 @@ export const ConversationParticipants: CollectionConfig = {
 
 export const ConversationTyping: CollectionConfig = {
   slug: 'conversation-typing',
+  labels: { singular: 'סטטוס הקלדה', plural: 'סטטוסי הקלדה' },
   dbName: 'conversation_typing',
   admin: {
     useAsTitle: 'id',

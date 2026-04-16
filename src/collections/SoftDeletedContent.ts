@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const SoftDeletedContent: CollectionConfig = {
   slug: 'soft-deleted-content',
+  labels: { singular: 'תוכן שנמחק', plural: 'פריטי תוכן שנמחקו' },
   dbName: 'soft_deleted_content',
   admin: {
     useAsTitle: 'id',

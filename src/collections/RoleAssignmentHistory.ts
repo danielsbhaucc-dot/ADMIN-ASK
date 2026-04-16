@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const RoleAssignmentHistory: CollectionConfig = {
   slug: 'role-assignment-history',
+  labels: { singular: 'שינוי תפקיד', plural: 'היסטוריית שינויי תפקיד' },
   dbName: 'role_assignment_history',
   admin: {
     useAsTitle: 'id',
@@ -32,6 +33,7 @@ export const RoleAssignmentHistory: CollectionConfig = {
 
 export const TrustScoreAudit: CollectionConfig = {
   slug: 'trust-score-audit',
+  labels: { singular: 'ביקורת ציון אמון', plural: 'ביקורות ציון אמון' },
   dbName: 'trust_score_audit',
   admin: {
     useAsTitle: 'id',
@@ -63,6 +65,7 @@ export const TrustScoreAudit: CollectionConfig = {
 
 export const UserTrustScore: CollectionConfig = {
   slug: 'user-trust-score',
+  labels: { singular: 'ציון אמון משתמש', plural: 'ציוני אמון משתמשים' },
   dbName: 'user_trust_score',
   admin: {
     useAsTitle: 'id',

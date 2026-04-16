@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const StaffNotes: CollectionConfig = {
   slug: 'staff-notes',
+  labels: { singular: 'הערת צוות', plural: 'הערות צוות' },
   dbName: 'staff_notes',
   admin: {
     useAsTitle: 'id',
@@ -34,6 +35,7 @@ export const StaffNotes: CollectionConfig = {
 
 export const UserFollows: CollectionConfig = {
   slug: 'user-follows',
+  labels: { singular: 'מעקב משתמש', plural: 'מעקבי משתמשים' },
   dbName: 'user_follows',
   admin: {
     useAsTitle: 'id',
@@ -66,6 +68,7 @@ export const UserFollows: CollectionConfig = {
 
 export const ProfileViews: CollectionConfig = {
   slug: 'profile-views',
+  labels: { singular: 'צפייה בפרופיל', plural: 'צפיות בפרופילים' },
   dbName: 'profile_views',
   admin: {
     useAsTitle: 'id',
@@ -98,6 +101,7 @@ export const ProfileViews: CollectionConfig = {
 
 export const ScoutsGuideDocument: CollectionConfig = {
   slug: 'scouts-guide-document',
+  labels: { singular: 'מסמך מדריך סיירים', plural: 'מסמכי מדריך סיירים' },
   dbName: 'scouts_guide_document',
   admin: {
     useAsTitle: 'id',
@@ -122,6 +126,7 @@ export const ScoutsGuideDocument: CollectionConfig = {
 
 export const ModerationFilterPresets: CollectionConfig = {
   slug: 'moderation-filter-presets',
+  labels: { singular: 'פרסט סינון מודרציה', plural: 'פרסטי סינון מודרציה' },
   dbName: 'moderation_filter_presets',
   admin: {
     useAsTitle: 'id',

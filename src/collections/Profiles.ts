@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const Profiles: CollectionConfig = {
   slug: 'profiles',
+  labels: { singular: 'פרופיל', plural: 'פרופילים' },
   dbName: 'profiles', // שם הטבלה הקיימת ב-Supabase
   admin: {
     useAsTitle: 'username',

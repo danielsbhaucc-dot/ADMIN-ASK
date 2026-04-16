@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const ModerationActionLogs: CollectionConfig = {
   slug: 'moderation-action-logs',
+  labels: { singular: 'רשומת פעולת מודרציה', plural: 'יומן פעולות מודרציה' },
   dbName: 'moderation_action_logs',
   admin: {
     useAsTitle: 'action_type',
