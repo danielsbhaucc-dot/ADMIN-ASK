@@ -1,3 +1,4 @@
+import { he } from '@payloadcms/translations/languages/he'
 import { buildConfig, type CollectionConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -185,6 +186,13 @@ function connectionStringForPgPool(
 const poolConnectionString = connectionStringForPgPool(databaseURL, poolSsl)
 
 export default buildConfig({
+  i18n: {
+    fallbackLanguage: 'he',
+    supportedLanguages: {
+      he,
+    },
+  },
+
   // הגדרת מסד הנתונים
   db: postgresAdapter({
     pool: {
@@ -212,9 +220,21 @@ export default buildConfig({
 
   admin: {
     // הגדרת קולקשן ה-Users כמי שמורשה להיכנס לפאנל הניהול
-    user: 'users', 
+    user: 'users',
+    dateFormat: 'dd/MM/yyyy HH:mm',
     meta: {
-      titleSuffix: '– AskHub Admin',
+      titleSuffix: '– AskHub | לוח בקרה',
+    },
+    toast: {
+      position: 'bottom-left',
+    },
+    components: {
+      graphics: {
+        Icon: '@/components/payload/AdminNavIcon',
+        Logo: '@/components/payload/AdminPremiumLogo',
+      },
+      header: ['@/components/payload/AdminPremiumHeader'],
+      beforeDashboard: ['@/components/payload/AdminPremiumBeforeDashboard'],
     },
   },
 

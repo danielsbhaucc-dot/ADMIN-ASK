@@ -1,0 +1,408 @@
+/* AskHub – עיצוב פרימיום צבעוני, עברית ו-RTL (שכבת payload מעל ברירת המחדל) */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap');
+
+@layer payload {
+  :root {
+    --askhub-rainbow: linear-gradient(
+      120deg,
+      #f472b6 0%,
+      #c084fc 25%,
+      #818cf8 50%,
+      #22d3ee 75%,
+      #34d399 100%
+    );
+    --askhub-glow-pink: rgba(236, 72, 153, 0.35);
+    --askhub-glow-violet: rgba(139, 92, 246, 0.3);
+    --askhub-glow-cyan: rgba(34, 211, 238, 0.28);
+
+    --font-body:
+      'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+      sans-serif;
+
+    --style-radius-s: 10px;
+    --style-radius-m: 14px;
+    --style-radius-l: 22px;
+
+    --color-base-0: rgb(252, 251, 255);
+    --color-base-50: rgb(245, 243, 252);
+    --color-base-100: rgb(237, 233, 250);
+    --color-base-150: rgb(224, 218, 243);
+    --color-base-200: rgb(210, 202, 235);
+    --color-base-250: rgb(196, 186, 226);
+    --color-base-300: rgb(180, 168, 214);
+    --color-base-350: rgb(162, 150, 198);
+    --color-base-400: rgb(142, 130, 180);
+    --color-base-450: rgb(122, 112, 160);
+    --color-base-500: rgb(102, 94, 140);
+    --color-base-550: rgb(88, 82, 122);
+    --color-base-600: rgb(74, 70, 104);
+    --color-base-650: rgb(62, 58, 88);
+    --color-base-700: rgb(52, 48, 74);
+    --color-base-750: rgb(42, 40, 60);
+    --color-base-800: rgb(34, 32, 48);
+    --color-base-850: rgb(28, 26, 40);
+    --color-base-900: rgb(22, 20, 34);
+    --color-base-950: rgb(16, 14, 26);
+    --color-base-1000: rgb(10, 8, 18);
+
+    --color-success-500: rgb(16, 163, 127);
+    --color-success-400: rgb(45, 212, 191);
+    --color-error-500: rgb(225, 60, 96);
+    --color-warning-500: rgb(217, 119, 87);
+
+    --theme-border-color: rgba(139, 92, 246, 0.35);
+  }
+
+  html[data-theme='dark'] {
+    --color-base-0: rgb(14, 12, 24);
+    --color-base-50: rgb(20, 18, 34);
+    --color-base-100: rgb(28, 26, 44);
+    --color-base-150: rgb(36, 33, 56);
+    --color-base-200: rgb(44, 40, 68);
+    --color-base-250: rgb(52, 48, 80);
+    --color-base-300: rgb(62, 56, 94);
+    --color-base-350: rgb(74, 66, 108);
+    --color-base-400: rgb(88, 78, 124);
+    --color-base-450: rgb(102, 90, 140);
+    --color-base-500: rgb(118, 104, 158);
+    --color-base-550: rgb(134, 118, 174);
+    --color-base-600: rgb(150, 132, 190);
+    --color-base-650: rgb(168, 148, 206);
+    --color-base-700: rgb(186, 166, 220);
+    --color-base-750: rgb(204, 184, 234);
+    --color-base-800: rgb(222, 202, 248);
+    --color-base-850: rgb(232, 216, 252);
+    --color-base-900: rgb(240, 228, 255);
+    --color-base-950: rgb(248, 238, 255);
+    --color-base-1000: rgb(252, 246, 255);
+
+    --theme-border-color: rgba(244, 114, 182, 0.45);
+  }
+
+  html {
+    font-family: var(--font-body);
+    background-color: var(--theme-bg);
+    background-image:
+      radial-gradient(1200px 600px at 100% -10%, var(--askhub-glow-pink), transparent 55%),
+      radial-gradient(900px 500px at -15% 20%, var(--askhub-glow-violet), transparent 50%),
+      radial-gradient(800px 480px at 85% 90%, var(--askhub-glow-cyan), transparent 45%),
+      linear-gradient(165deg, var(--theme-elevation-50) 0%, var(--theme-elevation-0) 48%, var(--theme-elevation-100) 100%);
+    background-attachment: fixed;
+  }
+
+  html[data-theme='dark'] {
+    background-image:
+      radial-gradient(1000px 520px at 100% 0%, rgba(236, 72, 153, 0.2), transparent 55%),
+      radial-gradient(880px 480px at 0% 30%, rgba(129, 140, 248, 0.18), transparent 50%),
+      radial-gradient(700px 400px at 80% 100%, rgba(34, 211, 238, 0.15), transparent 45%),
+      linear-gradient(170deg, var(--theme-elevation-50) 0%, var(--theme-elevation-0) 100%);
+  }
+
+  .template-default__wrap {
+    position: relative;
+    background: rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: var(--style-radius-l);
+    margin: calc(var(--base) * 0.6);
+    box-shadow:
+      0 4px 6px -1px rgba(99, 102, 241, 0.08),
+      0 24px 48px -12px rgba(79, 70, 229, 0.12),
+      0 0 0 1px rgba(139, 92, 246, 0.12);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    overflow: hidden;
+  }
+
+  html[data-theme='dark'] .template-default__wrap {
+    background: rgba(18, 16, 32, 0.55);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.35),
+      0 24px 48px -12px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(244, 114, 182, 0.15);
+  }
+
+  .template-default__wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--askhub-rainbow);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .nav {
+    position: relative;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(248, 250, 255, 0.88) 100%
+    ) !important;
+    box-shadow: inset -4px 0 0 0 transparent;
+  }
+
+  html[data-theme='dark'] .nav {
+    background: linear-gradient(
+      180deg,
+      rgba(22, 20, 38, 0.96) 0%,
+      rgba(14, 12, 28, 0.94) 100%
+    ) !important;
+  }
+
+  .nav::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    inset-inline-end: 0;
+    width: 4px;
+    background: var(--askhub-rainbow);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .app-header {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2) !important;
+    box-shadow: 0 8px 24px -12px rgba(99, 102, 241, 0.25);
+  }
+
+  html[data-theme='dark'] .app-header {
+    background: rgba(18, 16, 32, 0.65) !important;
+    border-bottom-color: rgba(244, 114, 182, 0.25) !important;
+  }
+
+  .btn {
+    border-radius: var(--style-radius-m) !important;
+    box-shadow: 0 2px 8px -2px rgba(99, 102, 241, 0.25);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -4px rgba(139, 92, 246, 0.35);
+  }
+
+  input:not([type='checkbox']):not([type='radio']),
+  textarea,
+  select,
+  .input {
+    border-radius: var(--style-radius-m) !important;
+    border-color: rgba(139, 92, 246, 0.28) !important;
+    box-shadow: 0 2px 6px -2px rgba(99, 102, 241, 0.12);
+  }
+
+  table {
+    border-radius: var(--style-radius-m);
+    overflow: hidden;
+    box-shadow: 0 4px 20px -8px rgba(79, 70, 229, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+  }
+
+  html[data-theme='dark'] table {
+    border-color: rgba(244, 114, 182, 0.2);
+    box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.4);
+  }
+
+  .card,
+  .collapsible,
+  .field-type,
+  .group-field__wrap {
+    border-radius: var(--style-radius-m) !important;
+  }
+
+  .pill {
+    border-radius: 999px !important;
+  }
+
+  /* באנר עליון מותאם */
+  .askhub-top-banner {
+    width: 100%;
+    background: var(--askhub-rainbow);
+    color: #0f172a;
+    font-weight: 700;
+    font-size: calc(var(--base) * 0.75);
+    letter-spacing: 0.01em;
+    box-shadow: 0 6px 20px -6px rgba(99, 102, 241, 0.45);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+  }
+
+  html[data-theme='dark'] .askhub-top-banner {
+    color: #f8fafc;
+    border-bottom-color: rgba(15, 23, 42, 0.35);
+  }
+
+  .askhub-top-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--base) * 0.5);
+    padding: calc(var(--base) * 0.45) calc(var(--base) * 0.75);
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .askhub-top-banner__emoji {
+    font-size: 1.15em;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+  }
+
+  /* כרטיס ברוכים הבאים בדשבורד */
+  .askhub-welcome-card {
+    margin-block-end: calc(var(--base) * 1.25);
+    padding: calc(var(--base) * 1.1);
+    border-radius: var(--style-radius-l);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(237, 233, 254, 0.85) 45%,
+      rgba(207, 250, 254, 0.75) 100%
+    );
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow:
+      0 12px 40px -16px rgba(99, 102, 241, 0.35),
+      0 0 0 1px rgba(139, 92, 246, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  html[data-theme='dark'] .askhub-welcome-card {
+    background: linear-gradient(
+      135deg,
+      rgba(30, 27, 52, 0.95) 0%,
+      rgba(45, 35, 72, 0.9) 50%,
+      rgba(22, 60, 72, 0.88) 100%
+    );
+    box-shadow:
+      0 12px 40px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(244, 114, 182, 0.22);
+  }
+
+  .askhub-welcome-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--askhub-rainbow);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  .askhub-welcome-card__title {
+    position: relative;
+    font-size: calc(var(--base) * 1.05);
+    font-weight: 800;
+    margin: 0 0 calc(var(--base) * 0.45);
+    color: var(--theme-text);
+  }
+
+  .askhub-welcome-card__text {
+    position: relative;
+    margin: 0 0 calc(var(--base) * 0.75);
+    line-height: 1.55;
+    color: var(--theme-elevation-650);
+    max-width: 52rem;
+  }
+
+  html[data-theme='dark'] .askhub-welcome-card__text {
+    color: var(--theme-elevation-400);
+  }
+
+  .askhub-welcome-card__chips {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--base) * 0.45);
+  }
+
+  .askhub-welcome-card__chips span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: calc(var(--base) * 0.28) calc(var(--base) * 0.65);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: calc(var(--base) * 0.65);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    box-shadow: 0 2px 8px -2px rgba(99, 102, 241, 0.2);
+  }
+
+  html[data-theme='dark'] .askhub-welcome-card__chips span {
+    background: rgba(22, 20, 38, 0.75);
+    border-color: rgba(244, 114, 182, 0.35);
+  }
+
+  /* אייקון ניווט */
+  .askhub-nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.35rem;
+    border-radius: 12px;
+    background: var(--askhub-rainbow);
+    box-shadow: 0 4px 12px -2px rgba(236, 72, 153, 0.45);
+  }
+
+  /* לוגו במסך התחברות */
+  .askhub-login-logo {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--base) * 0.65);
+    padding: calc(var(--base) * 0.5) 0;
+  }
+
+  .askhub-login-logo__mark {
+    font-size: 2.25rem;
+    line-height: 1;
+    filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.35));
+  }
+
+  .askhub-login-logo__title {
+    font-size:1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: var(--askhub-rainbow);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .askhub-login-logo__subtitle {
+    font-size: calc(var(--base) * 0.7);
+    font-weight: 600;
+    color: var(--theme-elevation-600);
+    margin-top: 0.15em;
+  }
+
+  html[data-theme='dark'] .askhub-login-logo__subtitle {
+    color: var(--theme-elevation-400);
+  }
+
+  @media (max-width: 768px) {
+    .template-default__wrap {
+      margin: calc(var(--base) * 0.25);
+      border-radius: var(--style-radius-m);
+    }
+  }
+}

@@ -8,6 +8,10 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     group: 'ניהול מערכת',
+    labels: {
+      singular: 'משתמש מערכת',
+      plural: 'משתמשי מערכת',
+    },
   },
   fields: [],
 }
