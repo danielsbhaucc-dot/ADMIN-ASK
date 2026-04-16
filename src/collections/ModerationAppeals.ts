@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const ModerationAppeals: CollectionConfig = {
   slug: 'moderation-appeals',
@@ -10,6 +11,7 @@ export const ModerationAppeals: CollectionConfig = {
     defaultColumns: ['appellant', 'status', 'reviewedBy'],
   },
   fields: [
+    uuidPk,
     {
       name: 'appellant',
       type: 'relationship',

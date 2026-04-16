@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const ContentEditHistory: CollectionConfig = {
   slug: 'content-edit-history',
@@ -10,6 +11,7 @@ export const ContentEditHistory: CollectionConfig = {
     defaultColumns: ['content_type', 'editor', 'editor_role', 'reason', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'content_type',
       type: 'text',

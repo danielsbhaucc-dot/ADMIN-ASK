@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const ContentPenalties: CollectionConfig = {
   slug: 'content-penalties',
@@ -10,6 +11,7 @@ export const ContentPenalties: CollectionConfig = {
     defaultColumns: ['user', 'rule', 'performedBy', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'user',
       type: 'relationship',

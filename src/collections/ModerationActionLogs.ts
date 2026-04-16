@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const ModerationActionLogs: CollectionConfig = {
   slug: 'moderation-action-logs',
@@ -10,6 +11,7 @@ export const ModerationActionLogs: CollectionConfig = {
     defaultColumns: ['actor', 'actor_role', 'action_type', 'target_type', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'actor',
       type: 'relationship',

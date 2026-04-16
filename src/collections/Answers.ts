@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const Answers: CollectionConfig = {
   slug: 'answers',
@@ -10,6 +11,7 @@ export const Answers: CollectionConfig = {
     defaultColumns: ['content', 'question', 'author', 'is_best_answer', 'moderation_status', 'votes'],
   },
   fields: [
+    uuidPk,
     {
       name: 'question',
       type: 'relationship',

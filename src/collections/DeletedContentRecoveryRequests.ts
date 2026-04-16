@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const DeletedContentRecoveryRequests: CollectionConfig = {
   slug: 'deleted-content-recovery-requests',
@@ -10,6 +11,7 @@ export const DeletedContentRecoveryRequests: CollectionConfig = {
     defaultColumns: ['requestedBy', 'target_type', 'status', 'reviewedBy', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'requestedBy',
       type: 'relationship',

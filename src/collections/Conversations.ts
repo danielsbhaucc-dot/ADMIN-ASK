@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const Conversations: CollectionConfig = {
   slug: 'conversations',
@@ -10,6 +11,7 @@ export const Conversations: CollectionConfig = {
     defaultColumns: ['createdBy', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'createdBy',
       type: 'relationship',
@@ -36,6 +38,7 @@ export const ConversationParticipants: CollectionConfig = {
     defaultColumns: ['conversation', 'user', 'is_muted', 'is_pinned'],
   },
   fields: [
+    uuidPk,
     {
       name: 'conversation',
       type: 'relationship',
@@ -74,6 +77,7 @@ export const ConversationTyping: CollectionConfig = {
     group: 'הודעות',
   },
   fields: [
+    uuidPk,
     {
       name: 'conversation',
       type: 'relationship',

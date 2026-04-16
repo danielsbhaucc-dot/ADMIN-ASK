@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const AdminReports: CollectionConfig = {
   slug: 'admin-reports',
@@ -10,6 +11,7 @@ export const AdminReports: CollectionConfig = {
     defaultColumns: ['content_type', 'reason', 'status', 'reporter', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'reporter',
       type: 'relationship',

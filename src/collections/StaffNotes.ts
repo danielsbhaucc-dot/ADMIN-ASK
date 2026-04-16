@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const StaffNotes: CollectionConfig = {
   slug: 'staff-notes',
@@ -10,6 +11,7 @@ export const StaffNotes: CollectionConfig = {
     defaultColumns: ['sender', 'recipient', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'sender',
       type: 'relationship',
@@ -43,6 +45,7 @@ export const UserFollows: CollectionConfig = {
     defaultColumns: ['follower', 'followed'],
   },
   fields: [
+    uuidPk,
     {
       name: 'follower',
       type: 'relationship',
@@ -76,6 +79,7 @@ export const ProfileViews: CollectionConfig = {
     defaultColumns: ['profile', 'viewer'],
   },
   fields: [
+    uuidPk,
     {
       name: 'profile',
       type: 'relationship',
@@ -109,6 +113,7 @@ export const ScoutsGuideDocument: CollectionConfig = {
     defaultColumns: ['updatedBy', 'updated_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'updatedBy',
       type: 'relationship',
@@ -134,6 +139,7 @@ export const ModerationFilterPresets: CollectionConfig = {
     defaultColumns: ['user', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'user',
       type: 'relationship',

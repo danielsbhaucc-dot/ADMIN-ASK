@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const ViolationRules: CollectionConfig = {
   slug: 'violation-rules',
@@ -9,6 +10,7 @@ export const ViolationRules: CollectionConfig = {
     group: 'מודרציה',
   },
   fields: [
+    uuidPk,
     {
       name: 'created_at',
       type: 'date',

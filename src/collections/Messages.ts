@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const Messages: CollectionConfig = {
   slug: 'messages',
@@ -10,6 +11,7 @@ export const Messages: CollectionConfig = {
     defaultColumns: ['sender', 'conversation', 'content', 'private', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'conversation',
       type: 'relationship',

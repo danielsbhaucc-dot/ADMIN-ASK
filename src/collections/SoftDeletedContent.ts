@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const SoftDeletedContent: CollectionConfig = {
   slug: 'soft-deleted-content',
@@ -10,6 +11,7 @@ export const SoftDeletedContent: CollectionConfig = {
     defaultColumns: ['deletedBy', 'penalty', 'restoredBy'],
   },
   fields: [
+    uuidPk,
     {
       name: 'deletedBy',
       type: 'relationship',

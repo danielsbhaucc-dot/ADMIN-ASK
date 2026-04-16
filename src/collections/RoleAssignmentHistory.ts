@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const RoleAssignmentHistory: CollectionConfig = {
   slug: 'role-assignment-history',
@@ -10,6 +11,7 @@ export const RoleAssignmentHistory: CollectionConfig = {
     defaultColumns: ['actor', 'targetUser', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'actor',
       type: 'relationship',
@@ -41,6 +43,7 @@ export const TrustScoreAudit: CollectionConfig = {
     defaultColumns: ['user', 'performedBy', 'created_at'],
   },
   fields: [
+    uuidPk,
     {
       name: 'user',
       type: 'relationship',
@@ -73,6 +76,7 @@ export const UserTrustScore: CollectionConfig = {
     defaultColumns: ['user'],
   },
   fields: [
+    uuidPk,
     {
       name: 'user',
       type: 'relationship',

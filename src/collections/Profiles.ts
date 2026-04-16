@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { uuidPk } from './fields/uuidPk'
 
 export const Profiles: CollectionConfig = {
   slug: 'profiles',
@@ -11,6 +12,7 @@ export const Profiles: CollectionConfig = {
   },
   auth: false,
   fields: [
+    uuidPk,
     {
       name: 'username',
       type: 'text',
