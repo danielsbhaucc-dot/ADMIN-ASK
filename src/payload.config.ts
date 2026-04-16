@@ -1,6 +1,7 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { parse as parsePgConnectionString } from 'pg-connection-string'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -35,11 +36,64 @@ import { ConversationTyping } from './collections/ConversationTyping'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+function normalizeDatabaseUrl(raw: string): string {
+  let s = raw.trim().replace(/^\uFEFF/, '')
+  if (
+    (s.startsWith('"') && s.endsWith('"')) ||
+    (s.startsWith("'") && s.endsWith("'"))
+  ) {
+    s = s.slice(1, -1).trim()
+  }
+  return s
+}
+
+const databaseURLRaw = process.env.DATABASE_URL
+const payloadSecret = process.env.PAYLOAD_SECRET
+
+if (!databaseURLRaw) {
+  throw new Error('Missing DATABASE_URL environment variable')
+}
+
+const databaseURL = normalizeDatabaseUrl(databaseURLRaw)
+
+if (!/^postgres(ql)?:\/\//i.test(databaseURL)) {
+  throw new Error(
+    'DATABASE_URL must be a full URI starting with postgresql:// (copy the full string from Supabase, not a fragment).',
+  )
+}
+
+let parsed: ReturnType<typeof parsePgConnectionString>
+try {
+  parsed = parsePgConnectionString(databaseURL)
+} catch {
+  throw new Error(
+    'DATABASE_URL is not a valid Postgres URI. Check for quotes, line breaks, or special characters in the password (encode with encodeURIComponent).',
+  )
+}
+
+const databaseHost = parsed.host
+
+if (!databaseHost || databaseHost === 'base') {
+  throw new Error(
+    'DATABASE_URL hostname is missing or invalid (often a truncated env value or an unencoded @ in the password). Re-copy the full URI from Supabase into Vercel.',
+  )
+}
+
+if (databaseHost !== 'localhost' && !databaseHost.includes('.')) {
+  throw new Error(
+    'DATABASE_URL hostname looks invalid. Expected a host like *.supabase.com or localhost.',
+  )
+}
+
+if (!payloadSecret) {
+  throw new Error('Missing PAYLOAD_SECRET environment variable')
+}
+
 export default buildConfig({
   // הגדרת מסד הנתונים
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: databaseURL,
     },
     // חשוב: מונע שינויים אוטומטיים בסכימה הקיימת שלך
     push: false,
@@ -93,7 +147,7 @@ export default buildConfig({
     ConversationTyping,
   ],
 
-  secret: process.env.PAYLOAD_SECRET || 'your-secret-here',
+  secret: payloadSecret,
 
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
