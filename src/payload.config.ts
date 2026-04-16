@@ -137,11 +137,44 @@ function poolSslForHost(host: string):
 
 const poolSsl = poolSslForHost(databaseHost)
 
+/**
+ * node-pg does: Object.assign({}, poolConfig, parse(connectionString)).
+ * Query params like sslmode= cause parse() to set ssl: {}, which overwrites poolConfig.ssl.
+ * Strip SSL query params when we pass explicit ssl on the pool.
+ */
+function connectionStringForPgPool(
+  connectionString: string,
+  explicitSsl: { rejectUnauthorized: boolean } | undefined,
+): string {
+  if (!explicitSsl) {
+    return connectionString
+  }
+  try {
+    const u = new URL(connectionString)
+    for (const key of [
+      'sslmode',
+      'ssl',
+      'sslcert',
+      'sslkey',
+      'sslrootcert',
+      'uselibpqcompat',
+    ]) {
+      u.searchParams.delete(key)
+    }
+    const out = u.toString()
+    return out.endsWith('?') ? out.slice(0, -1) : out
+  } catch {
+    return connectionString
+  }
+}
+
+const poolConnectionString = connectionStringForPgPool(databaseURL, poolSsl)
+
 export default buildConfig({
   // הגדרת מסד הנתונים
   db: postgresAdapter({
     pool: {
-      connectionString: databaseURL,
+      connectionString: poolConnectionString,
       ...(poolSsl ? { ssl: poolSsl } : {}),
     },
     // חשוב: מונע שינויים אוטומטיים בסכימה הקיימת שלך
