@@ -229,6 +229,7 @@ export default buildConfig({
       position: 'bottom-left',
     },
     components: {
+      Nav: '@/components/payload/ConsoleProNav',
       graphics: {
         Icon: '@/components/payload/AdminNavIcon',
         Logo: '@/components/payload/AdminPremiumLogo',

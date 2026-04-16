@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&subset=hebrew,latin&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heebo: 'Heebo', sans-serif;
+}
+
+html {
+  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar,
+.template-default__wrap *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-track,
+.template-default__wrap *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+.template-default__wrap *::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+  border: 2px solid #f3f4f8;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+.template-default__wrap *::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@layer components {
+  /* אזור ראשי — כמו בדוגמה: רקע אפור + גרדיאנט עליון */
+  .template-default__wrap {
+    @apply relative isolate overflow-x-hidden border border-slate-200/80 bg-[#f3f4f8] shadow-xl;
+  }
+
+  .template-default__wrap::before {
+    content: '';
+    @apply pointer-events-none absolute inset-x-0 top-0 z-0 h-80 bg-gradient-to-br from-indigo-700 via-blue-600 to-cyan-500;
+  }
+
+  .template-default__wrap .app-header {
+    @apply relative z-10 border-0 border-b border-white/10 bg-black/10 text-white shadow-none backdrop-blur-md;
+  }
+
+  .template-default__wrap .app-header a,
+  .template-default__wrap .app-header button {
+    @apply text-inherit;
+  }
+
+  .template-default__wrap .app-header svg {
+    @apply opacity-90;
+  }
+
+  .template-default__wrap .step-nav::after {
+    background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.25)) !important;
+  }
+
+  [dir='rtl'] .template-default__wrap .step-nav::after {
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25)) !important;
+  }
+
+  /* סרגל Payload: רקע כהה; פירוט נוסף ב-ConsoleProNav */
+  aside.nav {
+    @apply border-l border-white/5 bg-[#0B1121] shadow-2xl;
+  }
+
+  [dir='rtl'] aside.nav {
+    @apply border-l-0 border-r border-white/5;
+  }
+}
+
