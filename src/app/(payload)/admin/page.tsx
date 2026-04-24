@@ -1,4 +1,11 @@
 import config from '../../../payload.config'
-import { RootPage } from '@payloadcms/next/views'
+import { AdminView } from '@payloadcms/next/views'
 
-export default RootPage({ config })
+const Page = AdminView({
+  config,
+  importMap: {
+    baseDir: process.cwd(),
+  },
+})
+
+export default Page

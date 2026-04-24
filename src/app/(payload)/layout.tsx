@@ -1,9 +1,21 @@
-/* This is a generated file. Payload imports it automatically.
- * You can customize it by creating a custom layout component.
- */
-
-import '@payloadcms/next/css'
-import { RootLayout } from '@payloadcms/next/views'
+import React from 'react'
+import { initAdmin } from '@payloadcms/next/utilities'
 import config from '../../payload.config'
 
-export default RootLayout({ config })
+import '@payloadcms/next/css'
+
+type Args = {
+  children: React.ReactNode
+}
+
+const Layout = ({ children }: Args) => {
+  return (
+    <html lang="he" dir="rtl">
+      <body>
+        {children}
+      </body>
+    </html>
+  )
+}
+
+export default initAdmin({ config, RootLayout: Layout })
