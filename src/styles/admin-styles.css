@@ -1,0 +1,294 @@
+/* AskHub Admin - Colorful Custom Theme */
+/* This file customizes the Payload admin UI with a colorful, modern design */
+
+/* ===== COLOR VARIABLES ===== */
+:root {
+  /* Primary gradient colors */
+  --primary-indigo: #6366f1;
+  --primary-purple: #8b5cf6;
+  --primary-pink: #ec4899;
+  
+  /* Accent colors */
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  
+  /* Background colors */
+  --bg-dark: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-surface-light: #334155;
+  --bg-elevated: #475569;
+  
+  /* Text colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+}
+
+/* ===== GLOBAL STYLES ===== */
+.payload-admin {
+  /* Dark theme base */
+  --theme-bg: var(--bg-dark);
+  --theme-surface: var(--bg-surface);
+  --theme-text: var(--text-primary);
+  --theme-text-secondary: var(--text-secondary);
+}
+
+/* ===== NAVBAR CUSTOMIZATION ===== */
+.nav {
+  background: linear-gradient(135deg, var(--primary-indigo) 0%, var(--primary-purple) 50%, var(--primary-pink) 100%) !important;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3) !important;
+}
+
+.nav__brand {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+
+/* ===== SIDEBAR ===== */
+.nav-group__toggle {
+  background: var(--bg-surface) !important;
+  border-left: 3px solid transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-group__toggle:hover {
+  background: var(--bg-surface-light) !important;
+  border-left-color: var(--accent-cyan) !important;
+}
+
+.nav-group--active .nav-group__toggle {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.2) 0%, transparent 100%) !important;
+  border-left-color: var(--primary-indigo) !important;
+}
+
+/* ===== CARDS & TABLES ===== */
+.collection-list__table {
+  background: var(--bg-surface) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.collection-list__header {
+  background: linear-gradient(135deg, var(--bg-surface-light) 0%, var(--bg-surface) 100%) !important;
+  border-bottom: 2px solid var(--primary-indigo) !important;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  text-transform: none !important;
+}
+
+.btn--style-primary {
+  background: linear-gradient(135deg, var(--primary-indigo) 0%, var(--primary-purple) 100%) !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
+}
+
+.btn--style-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+}
+
+.btn--style-secondary {
+  background: var(--bg-surface-light) !important;
+  border: 1px solid var(--primary-indigo) !important;
+  color: var(--primary-indigo) !important;
+}
+
+/* ===== FORM ELEMENTS ===== */
+.field-type input,
+.field-type textarea,
+.field-type select {
+  background: var(--bg-surface) !important;
+  border: 2px solid var(--bg-surface-light) !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  transition: all 0.2s ease !important;
+}
+
+.field-type input:focus,
+.field-type textarea:focus,
+.field-type select:focus {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2) !important;
+}
+
+/* ===== STATUS BADGES ===== */
+.cell--status-active,
+.cell--status-pending {
+  background: linear-gradient(135deg, var(--accent-amber) 0%, #fbbf24 100%) !important;
+  color: var(--text-inverse) !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+}
+
+.cell--status-resolved,
+.cell--status-approved {
+  background: linear-gradient(135deg, var(--accent-emerald) 0%, #34d399 100%) !important;
+  color: white !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+  font-weight: 600 !important;
+}
+
+.cell--status-banned,
+.cell--status-rejected {
+  background: linear-gradient(135deg, var(--accent-rose) 0%, #fb7185 100%) !important;
+  color: white !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+  font-weight: 600 !important;
+}
+
+/* ===== GROUP HEADERS ===== */
+.nav-group__label {
+  color: var(--accent-cyan) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 1px !important;
+}
+
+/* Group colors - using gradients for each group */
+[data-group="תוכן"] .nav-group__toggle {
+  border-left-color: var(--accent-emerald) !important;
+}
+
+[data-group="משתמשים"] .nav-group__toggle {
+  border-left-color: var(--primary-indigo) !important;
+}
+
+[data-group="מודרציה"] .nav-group__toggle {
+  border-left-color: var(--accent-rose) !important;
+}
+
+[data-group="היסטוריה"] .nav-group__toggle {
+  border-left-color: var(--accent-amber) !important;
+}
+
+[data-group="הודעות"] .nav-group__toggle {
+  border-left-color: var(--accent-cyan) !important;
+}
+
+[data-group="חברתי"] .nav-group__toggle {
+  border-left-color: var(--primary-pink) !important;
+}
+
+/* ===== PAGINATION ===== */
+.pagination {
+  background: var(--bg-surface) !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+}
+
+.pagination__button {
+  background: var(--bg-surface-light) !important;
+  border-radius: 6px !important;
+  color: var(--text-primary) !important;
+}
+
+.pagination__button:hover {
+  background: var(--primary-indigo) !important;
+  color: white !important;
+}
+
+/* ===== MODAL/DIALOG ===== */
+.modal {
+  background: var(--bg-surface) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+.modal__header {
+  background: linear-gradient(135deg, var(--bg-surface-light) 0%, var(--bg-surface) 100%) !important;
+  border-bottom: 2px solid var(--primary-indigo) !important;
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast-success {
+  background: linear-gradient(135deg, var(--accent-emerald) 0%, #059669 100%) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+}
+
+.toast-error {
+  background: linear-gradient(135deg, var(--accent-rose) 0%, #e11d48 100%) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3) !important;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-indigo);
+}
+
+/* ===== RTL SUPPORT ===== */
+[dir="rtl"] .nav-group__toggle {
+  border-left: none !important;
+  border-right: 3px solid transparent !important;
+}
+
+[dir="rtl"] .nav-group__toggle:hover {
+  border-right-color: var(--accent-cyan) !important;
+}
+
+[dir="rtl"] .nav-group--active .nav-group__toggle {
+  border-right-color: var(--primary-indigo) !important;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.collection-list__item {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ===== HOVER EFFECTS ===== */
+.collection-list__row:hover {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%) !important;
+}
+
+/* ===== FILTERS & SEARCH ===== */
+.search-filter {
+  background: var(--bg-surface) !important;
+  border-radius: 8px !important;
+  border: 2px solid var(--bg-surface-light) !important;
+}
+
+.search-filter:focus-within {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2) !important;
+}
