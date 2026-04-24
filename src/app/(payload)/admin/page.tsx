@@ -1,4 +1,4 @@
-import { AdminPage } from '@payloadcms/next/pages'
 import config from '../../../payload.config'
+import { RootPage } from '@payloadcms/next/views'
 
-export default AdminPage({ config })
+export default RootPage({ config })

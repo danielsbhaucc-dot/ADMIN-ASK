@@ -1,10 +1,11 @@
 import React from 'react'
-import { Inter } from 'next/font/google'
+import { Heebo } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
+const heebo = Heebo({
   subsets: ['latin', 'hebrew'],
-  variable: '--font-inter',
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-heebo',
 })
 
 export default function RootLayout({
@@ -13,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="he" dir="rtl" className={inter.variable}>
+    <html lang="he" dir="rtl" className={heebo.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )
